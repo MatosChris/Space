@@ -1,0 +1,38 @@
+---
+title: "Exercise 6"
+author: "Chris Matos"
+date: "8/11/2021"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, }
+library(ggplot2) # see http://ggplot2.tidyverse.org/reference/ for references
+library(dplyr)  # to group categories for bar charts
+
+space.launches.df <- read.csv('GSL.csv')
+head(space.launches.df) 
+str(space.launches.df) 
+dim(space.launches.df) 
+```
+
+```{r }
+
+p <- ggplot(space.launches.df)
+
+p + geom_bar(aes(x = Year))+
+  labs(title = "Space Launches")
+
+
+p + geom_bar(aes(x = Companys.Country.of.Origin, fill = Private.or.State.Run), position="dodge") +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+
+p + geom_bar(aes(x = Companys.Country.of.Origin, fill = Private.or.State.Run), position="fill") +
+theme(axis.text.x = element_text(angle = 60, hjust = 1))
+
+
+
+ 
+```
+
